@@ -82,7 +82,7 @@ spec:
      port: 80
      targetPort: 80
    type: LoadBalancer
-```python
+```
 
 - Applying the service: `kubectl apply -f mygame-svc.yaml`
 
