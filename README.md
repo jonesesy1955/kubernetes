@@ -1,4 +1,4 @@
-# kubernetes
+# Kubernetes
 Notes on tutorials, projects using k8s 
 
 # Project_1: Creating a EKS cluster and deploy 2048 game
@@ -25,8 +25,9 @@ I'm watching this YT https://www.youtube.com/watch?v=wyad99QMKtc&t=24s to use to
 - Confirmed kube file was created: `cat .kube/config`
 
 ## Creating the pod and configuration file for the pod
-- installing nano: `sudo yum install nano -y`
-- inserted the pod with the code: 
+- Istalling nano: `sudo yum install nano -y`
+- Inserted the pod with the code:
+
 `apiVersion: v1
 kind: Pod
 metadata:
@@ -40,9 +41,10 @@ spec:
      ports:
        - containerPort: 80
 `
-- creating the pod: `kubectl apply -f 2048-pod.yaml`
-- confirming the pod was created: `kubectl get pods`
-- Got an error message, and the pod did not run. Troubleshooted through AI,`kubectl describe pod 2048-pod.yaml` the suggestion was to edit my code because they was an architecture compatibility issue with my AWS environment. New code: 
+- Creating the pod: `kubectl apply -f 2048-pod.yaml`
+- Confirming the pod was created: `kubectl get pods`
+- Got an error message, and the pod did not run. Troubleshooted through AI,`kubectl describe pod 2048-pod.yaml` the suggestion was to edit my code because they was an architecture compatibility issue with my AWS environment. New code:
+   
 `apiVersion: v1
 kind: Pod
 metadata:
@@ -56,12 +58,13 @@ spec:
      ports:
        - containerPort: 80
 `
-- deleting the old failed pod: `kubectl delete pod 2048-pod`
-- applying the new version: `kubectl apply -f 2048-pod.yaml
-- verifying the pods: `kubectl get pods -w`
+- Deleting the old failed pod: `kubectl delete pod 2048-pod`
+- Applying the new version: `kubectl apply -f 2048-pod.yaml
+- Verifying the pods: `kubectl get pods -w`
 - Pod created and running!
 
 ## Creating service to be the endpoint load balancer
+
 `apiVersion: v1
 kind: Service
 metadata:
@@ -75,5 +78,5 @@ spec:
      targetPort: 80
    type: LoadBalancer
 `
-- applying the service: `kubectl apply -f mygame-svc.yaml`
+- Applying the service: `kubectl apply -f mygame-svc.yaml`
 
