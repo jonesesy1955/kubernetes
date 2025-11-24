@@ -25,7 +25,7 @@ I'm watching this YT https://www.youtube.com/watch?v=wyad99QMKtc&t=24s to use to
 - Confirmed kube file was created: `cat .kube/config`
 
 ## Creating the pod and configuration file for the pod
-- Istalling nano: `sudo yum install nano -y`
+- Installing nano: `sudo yum install nano -y`
 - Inserted the pod with the code:
 
 ```python
