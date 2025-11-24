@@ -28,6 +28,7 @@ I'm watching this YT https://www.youtube.com/watch?v=wyad99QMKtc&t=24s to use to
 - Istalling nano: `sudo yum install nano -y`
 - Inserted the pod with the code:
 
+```python
 `apiVersion: v1
 kind: Pod
 metadata:
@@ -40,11 +41,13 @@ spec:
      image: blackicebird/2048
      ports:
        - containerPort: 80
-`
+```
+
 - Creating the pod: `kubectl apply -f 2048-pod.yaml`
 - Confirming the pod was created: `kubectl get pods`
 - Got an error message, and the pod did not run. Troubleshooted through AI,`kubectl describe pod 2048-pod.yaml` the suggestion was to edit my code because they was an architecture compatibility issue with my AWS environment. New code:
-   
+
+```python
 `apiVersion: v1
 kind: Pod
 metadata:
@@ -57,7 +60,8 @@ spec:
      image: public.ecr.aws/kishorj/docker-2048:latest
      ports:
        - containerPort: 80
-`
+```
+
 - Deleting the old failed pod: `kubectl delete pod 2048-pod`
 - Applying the new version: `kubectl apply -f 2048-pod.yaml
 - Verifying the pods: `kubectl get pods -w`
@@ -65,6 +69,7 @@ spec:
 
 ## Creating service to be the endpoint load balancer
 
+```python
 `apiVersion: v1
 kind: Service
 metadata:
@@ -77,6 +82,7 @@ spec:
      port: 80
      targetPort: 80
    type: LoadBalancer
-`
+```python
+
 - Applying the service: `kubectl apply -f mygame-svc.yaml`
 
